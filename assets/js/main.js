@@ -25,9 +25,13 @@
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
       e.preventDefault();
       var target = $(this.hash);
+      var scrollto;
       if (target.length) {
 
-        var scrollto = target.offset().top;
+        if(this.hash == "#header")
+            scrollto = 0;
+        else
+            scrollto = target.offset().top;
 
         $('html, body').animate({
           scrollTop: scrollto
@@ -152,7 +156,7 @@
     });
   });
 
-  // Testimonials carousel (uses the Owl Carousel library)
+  //Testimonials carousel (uses the Owl Carousel library)
   // $(".testimonials-carousel").owlCarousel({
   //   autoplay: true,
   //   dots: true,
@@ -170,13 +174,24 @@
   //   }
   // });
 
-
+var delayInMilliseconds = 7000; //1 second
+setTimeout(function() {
+  //your code to be executed after 1 second
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,
     dots: true,
-    loop: false, 
+    loop: true, 
     items: 1
   });
+
+}, delayInMilliseconds);
+
+  // $(".testimonials-carousel").owlCarousel({
+  //   autoplay: true,
+  //   dots: true,
+  //   loop: true, 
+  //   items: 1
+  // });
 
 
   // Portfolio details carousel
